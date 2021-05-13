@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import DayList from "components/DayList";
+import Appointment from "components/Appointment"
 
 import "components/Application.scss";
 
@@ -20,6 +21,49 @@ const days = [
     spots: 0,
   },
 ];
+
+const appointments = [
+  {
+    id: 1,
+    time: "12pm",
+  },
+  {
+    id: 2,
+    time: "1pm",
+    interview: {
+      student: "Lydia Miller-Jones",
+      interviewer: {
+        id: 1,
+        name: "Sylvia Palmer",
+        avatar: "https://i.imgur.com/LpaY82x.png",
+      }
+    }
+  },
+  {
+    id: 3,
+    time: "2pm",
+  },
+  {
+    id: 4,
+    time: "3pm",
+  },
+  {
+    id: 5,
+    time: "4pm",
+    interview: {
+      student: "Alice Anderson",
+      interviewer: {
+        id: 2,
+        name: "Tori Malcolm",
+        avatar: "https://i.imgur.com/Nmx0Qxo.png",
+      }
+    }
+  }
+];
+
+const iterate = appointments.map(appointment => {
+  return (<Appointment key={appointment.id} {... appointment} />)
+});
 
 export default function Application(props) {
   const [day, setDay] = useState("Monday");
@@ -50,8 +94,31 @@ export default function Application(props) {
         />
       </section>
       <section className="schedule">
-        {/* Replace this with the schedule elements durint the "The Scheduler" activity. */}
+        <ul className="interviewers__list">{iterate} <Appointment key="last" time="5pm" /></ul>
       </section>
     </main>
   );
 }
+
+// export default function InterviewerList(props){
+
+//   const interviewers = props.interviewers.map(interviewer => {
+
+//     return (
+//       <InterviewerListItem
+//         key={interviewer.id}
+//         name={interviewer.name}
+//         avatar={interviewer.avatar}
+//         selected={interviewer.id === props.interviewer}
+//         setInterviewer={event => props.setInterviewer(interviewer.id)}
+//       />
+//     )
+//   })
+
+//     return (
+//       <section className="interviewers">
+//         <h4 className="interviewers__header text--light">Interviewer</h4>
+//         <ul className="interviewers__list">{interviewers}</ul>
+//       </section>
+//     )
+//   }
