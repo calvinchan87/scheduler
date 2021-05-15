@@ -16,3 +16,23 @@ export function getAppointmentsForDay(state, day) {
   return appointmentArray;
 
 }
+
+export function getInterview(state, interview) {
+
+  // The function should return a new object containing the interview data when we pass it an object that contains the interviewer.
+  // Otherwise, the function should return null. 
+  // console.log(state);
+  // console.log(interview);
+
+  let interviewObject = interview;
+
+  if (interview) {
+    let interviewerID = interview.interviewer;
+    // console.log(state.interviewers[interviewerID]);
+    interviewObject.interviewer = state.interviewers[interviewerID];
+    // console.log(interviewObject);
+  }
+
+  return interviewObject;
+
+}
