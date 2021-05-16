@@ -64,6 +64,25 @@ export default function Application(props) {
 
   const interviewers = getInterviewersForDay(state, state.day);
 
+  function bookInterview(id, interview) {
+    console.log(id, interview);
+    const appointment = {
+      ...state.appointments[id],
+      interview: { ...interview }
+    };
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    };
+    return axios.put(`/api/appointments/${id}`, appointment)
+    .then(res => {
+      setState({
+        ...state,
+        appointments
+      });
+    })
+  }
+
   // const dailyAppointments = [];
   const dailyAppointments = getAppointmentsForDay(state, state.day);
 
@@ -76,6 +95,7 @@ export default function Application(props) {
         {...appointment}
         interview={interview}
         interviewers={interviewers}
+        bookInterview={bookInterview}
       />
     );
   });
