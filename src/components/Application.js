@@ -62,6 +62,8 @@ export default function Application(props) {
     interviewers: {}
   });
 
+  const interviewers = getInterviewersForDay(state, state.day);
+
   // const dailyAppointments = [];
   const dailyAppointments = getAppointmentsForDay(state, state.day);
 
@@ -73,12 +75,10 @@ export default function Application(props) {
         key={appointment.id}
         {...appointment}
         interview={interview}
+        interviewers={interviewers}
       />
     );
   });
-
-  const interviewers = getInterviewersForDay(state, state.day);
-  console.log(interviewers)
 
   const setDay = day => setState({ ...state, day });
 
