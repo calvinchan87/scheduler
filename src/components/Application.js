@@ -138,7 +138,7 @@ export default function Application(props) {
         />
       </section>
       <section className="schedule">
-        <ul className="interviewers__list">{iterateAppointments} <Appointment key="last" time="5pm" /></ul>
+        {iterateAppointments} <Appointment key="last" time="5pm" />
       </section>
     </main>
   );
