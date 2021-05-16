@@ -21,13 +21,17 @@ export default function Appointment(props) {
   const ERROR_DELETE = "ERROR_DELETE";
   const CONFIRM = "CONFIRM";
 
+  const { mode, transition, back } = useVisualMode(
+    props.interview ? SHOW : EMPTY
+  );
+
   function save(name, interviewer) {
     const interview = {
       student: name,
       interviewer
     };
     transition(SAVING);
-    return props.bookInterview(props.id, interview)
+    props.bookInterview(props.id, interview)
     .then (res => {
       transition(SHOW);
     })
@@ -38,7 +42,7 @@ export default function Appointment(props) {
 
   function deleteInterview() {
     transition(DELETING, true);
-    return props.cancelInterview(props.id)
+    props.cancelInterview(props.id)
     .then (res => {
       transition(EMPTY);
     })
@@ -46,10 +50,6 @@ export default function Appointment(props) {
       transition(ERROR_DELETE, true);
     })
   }
-
-  const { mode, transition, back } = useVisualMode(
-    props.interview ? SHOW : EMPTY
-  );
 
   console.log(props)
 

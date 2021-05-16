@@ -43,12 +43,14 @@ export function getInterview(state, interview) {
   // console.log(state);
   // console.log(interview);
 
-  let interviewObject = interview;
+  // let interviewObject = interview;
+  let interviewObject = null;
 
   if (interview) {
     let interviewerID = interview.interviewer;
     // console.log(state.interviewers[interviewerID]);
-    interviewObject.interviewer = state.interviewers[interviewerID];
+    // interviewObject.interviewer = state.interviewers[interviewerID];
+    interviewObject = {...interview, interviewer: state.interviewers[interviewerID]};
     // console.log(interviewObject);
   }
 
