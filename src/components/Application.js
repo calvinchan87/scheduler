@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import DayList from "components/DayList";
 import Appointment from "components/Appointment"
-import { getAppointmentsForDay, getInterview } from "helpers/selectors"
+import { getAppointmentsForDay, getInterviewersForDay, getInterview } from "helpers/selectors"
 
 import "components/Application.scss";
 
@@ -65,7 +65,7 @@ export default function Application(props) {
   // const dailyAppointments = [];
   const dailyAppointments = getAppointmentsForDay(state, state.day);
 
-  const iterate = dailyAppointments.map(appointment => {
+  const iterateAppointments = dailyAppointments.map(appointment => {
     const interview = getInterview(state, appointment.interview);
 
     return (
@@ -76,6 +76,9 @@ export default function Application(props) {
       />
     );
   });
+
+  const interviewers = getInterviewersForDay(state, state.day);
+  console.log(interviewers)
 
   const setDay = day => setState({ ...state, day });
 
@@ -135,7 +138,7 @@ export default function Application(props) {
         />
       </section>
       <section className="schedule">
-        <ul className="interviewers__list">{iterate} <Appointment key="last" time="5pm" /></ul>
+        <ul className="interviewers__list">{iterateAppointments} <Appointment key="last" time="5pm" /></ul>
       </section>
     </main>
   );

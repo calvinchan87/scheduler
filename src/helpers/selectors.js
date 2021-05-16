@@ -17,6 +17,25 @@ export function getAppointmentsForDay(state, day) {
 
 }
 
+export function getInterviewersForDay(state, day) {
+  //... returns an array of appointments for that day
+  const interviewersForDay = state.days.filter(today=> today.name === day);
+  // console.log(appointmentsForDay[0].appointments)
+
+  let interviewerArray = [];
+
+  if (interviewersForDay[0] === undefined) {
+    return interviewerArray;
+  }
+
+  for (let id of interviewersForDay[0].interviewers) {
+    // console.log(state.appointments[id])
+    interviewerArray.push(state.interviewers[id])
+  }
+  return interviewerArray;
+
+}
+
 export function getInterview(state, interview) {
 
   // The function should return a new object containing the interview data when we pass it an object that contains the interviewer.
