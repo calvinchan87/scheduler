@@ -26,6 +26,17 @@ export default function useApplicationData() {
     };
     return axios.put(`/api/appointments/${id}`, {interview})
     .then(res => {
+      // console.log(id)
+      // console.log(state)
+      // if (state.day === "Monday") {
+      //   let count = 0;
+      //   for (let x = 1; x < 6; x++) {
+      //     if (state.appointments.x.interview === null) {
+      //       count++;
+      //     }
+      //   }
+      //   console.log(count);
+      // }
       setState({
         ...state,
         appointments
