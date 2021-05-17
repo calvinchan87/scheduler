@@ -28,7 +28,7 @@ export default function useApplicationData() {
     .then(res => {
       setState({
         ...state,
-        appointments,
+        appointments
       });
     })
   }
