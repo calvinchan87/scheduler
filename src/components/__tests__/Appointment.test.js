@@ -1,5 +1,5 @@
 /*
-  We are rendering `<Application />` down below, so we need React.createElement
+  We are rendering `<Appointment />` down below, so we need React.createElement
 */
 import React from "react";
 
