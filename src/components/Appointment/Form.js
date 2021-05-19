@@ -24,6 +24,7 @@ export default function Edit(props){
       return;
     }
   
+    setError("");
     props.onSave(name, interviewer);
   }
 
