@@ -37,17 +37,6 @@ export default function Application(props) {
     );
   });
 
-  // const setDays = days => setState({ ...state, days });
-  // const setDays = days => setState(prev => ({ ...prev, days }));
-
-  // useEffect(() => {
-  //   axios.get("api/days")
-  //   .then(function (response) {
-  //     // console.log(response);
-  //     // setDays(response.data);
-  //   })
-  // }, []);
-
   return (
     <main className="layout">
       <section className="sidebar">
@@ -78,4 +67,4 @@ export default function Application(props) {
       </section>
     </main>
   );
-}
+};
